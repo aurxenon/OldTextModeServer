@@ -1,4 +1,4 @@
-package net.edcubed.SmittyCommons;
+package net.edcubed.TextModeCommons;
 
 import java.io.*;
 

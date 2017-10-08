@@ -1,8 +1,8 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
-import net.edcubed.SmittyCommons.*;
+import net.edcubed.TextModeCommons.*;
 
 public class PeopleUtils {
     ArrayList<PlayerData> playerStuff = new ArrayList<PlayerData>();

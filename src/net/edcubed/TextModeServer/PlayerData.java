@@ -1,7 +1,7 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
 import java.net.InetAddress;
-import net.edcubed.SmittyCommons.*;
+import net.edcubed.TextModeCommons.*;
 
 public class PlayerData {
     InetAddress ip;

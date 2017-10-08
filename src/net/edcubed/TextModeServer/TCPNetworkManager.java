@@ -1,6 +1,6 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
-import net.edcubed.SmittyCommons.PlayerMP;
+import net.edcubed.TextModeCommons.PlayerMP;
 
 import java.io.*;
 import java.net.*;

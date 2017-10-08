@@ -1,4 +1,4 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
 import java.util.ArrayList;
 

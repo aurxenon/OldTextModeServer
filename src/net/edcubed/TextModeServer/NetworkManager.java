@@ -1,9 +1,9 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
 import java.io.*;
 import java.net.*;
 
-import net.edcubed.SmittyCommons.*;
+import net.edcubed.TextModeCommons.*;
 
 public class NetworkManager extends Thread{
     private DatagramSocket socket;

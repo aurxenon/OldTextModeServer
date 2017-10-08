@@ -1,6 +1,6 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
-import net.edcubed.SmittyCommons.Place;
+import net.edcubed.TextModeCommons.Place;
 
 import java.util.ArrayList;
 

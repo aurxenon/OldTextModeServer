@@ -1,9 +1,9 @@
-package net.edcubed.SmittyServer;
+package net.edcubed.TextModeServer;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.edcubed.SmittyCommons.*;
+import net.edcubed.TextModeCommons.*;
 
 public class ExtraUtils {
     ArrayList<Player> gamePlayers = new ArrayList<Player>();

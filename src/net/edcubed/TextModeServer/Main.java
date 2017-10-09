@@ -10,7 +10,7 @@ public class Main{
     public static int worldSizeY = 1024;
     public static TerrainGeneration generator;
     public static TCPNetworkManager tcpNetworker;
-    public static String versionCode = "alphav1.0";
+    public static String versionCode = "alphav2.0";
 
     public static void main(String[] args){
         try{

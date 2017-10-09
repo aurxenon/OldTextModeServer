@@ -1,5 +1,6 @@
 package net.edcubed.TextModeServer;
 
+import net.edcubed.TextModeCommons.Packets.LoginPacket;
 import net.edcubed.TextModeCommons.PlayerMP;
 
 import java.io.*;
@@ -54,6 +55,9 @@ public class TCPNetworkManager extends Thread{
                     try {
                         //DataInputStream objectInput = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
                         message = objectInput.readObject();
+                        if (message instanceof LoginPacket) {
+                            playerLogin(socket, objectOutput);
+                        }
                         if (message instanceof PlayerMP) {
                             PlayerMP playerMP = (PlayerMP)message;
                             if (playerMP.getConnectionStatus() == PlayerMP.Status.LOGIN) {
@@ -119,8 +123,11 @@ public class TCPNetworkManager extends Thread{
     }
 
     public void playerLogin(Socket skt, ObjectOutputStream objectOutput){
+        System.out.println("Sending world");
         sendTCPData(Main.generator.getWorld(), skt, objectOutput);
+        System.out.println("Sent world");
+        System.out.println("Sending world size");
         sendTCPData(Main.worldSize, skt, objectOutput);
+        System.out.println("Sent world size");
     }
-
 }

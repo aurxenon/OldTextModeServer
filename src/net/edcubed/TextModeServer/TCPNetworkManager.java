@@ -32,19 +32,13 @@ public class TCPNetworkManager extends Thread{
     }
 
     public void addThread(Socket socket) {
-        ObjectOutputStream objectOutput;
-        try {
-            objectOutput = new ObjectOutputStream(socket.getOutputStream());
-        }catch (IOException e){
-            e.printStackTrace();
-            closeSocket(socket);
-            return;
-        }
         new Thread(new Runnable() {
             public void run() {
+                ObjectOutputStream objectOutput;
                 ObjectInputStream objectInput;
                 try {
-                    objectInput = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));;
+                    objectInput = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+                    objectOutput = new ObjectOutputStream(socket.getOutputStream());
                 }catch (IOException e){
                     e.printStackTrace();
                     closeSocket(socket);
@@ -63,11 +57,6 @@ public class TCPNetworkManager extends Thread{
                             if (playerMP.getConnectionStatus() == PlayerMP.Status.LOGIN) {
                                 playerLogin(socket, objectOutput);
                             }
-                        /*if (playerMP.getConnectionStatus() == PlayerMP.Status.DISCONNECT) {
-                            System.out.println(player.getPlayerName() + " left the game");
-                            playerDisconnect(player, packet, packet.getPort());
-                        }
-                        sendData(utils.getGamePlayers(), packet.getAddress(), packet.getPort());*/
                         }
                         if (message instanceof String) {
                             System.out.println((String)message);
@@ -87,23 +76,6 @@ public class TCPNetworkManager extends Thread{
                 }
             }
         }).start();
-
-        /*//tcp keep alive thread thread
-        new Thread(new Runnable() {
-            public void run() {
-                while (true) {
-                    try {
-                        Thread.sleep(15000);
-                        //tcpNetworker.sendData("i'm still here please don't leave me",tcpNetworker.socket);
-                        sendTCPData("i'll always be here for you :)", socket, objectOutput);
-                        System.out.println("Sending keep alive");
-                    }catch(InterruptedException e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();*/
-
     }
 
     public void closeSocket(Socket skt) {
@@ -117,17 +89,14 @@ public class TCPNetworkManager extends Thread{
     public void sendTCPData(Object message, Socket skt, ObjectOutputStream objectOutput) {
         try {
             objectOutput.writeObject(message);
+            objectOutput.flush();
         }catch(IOException e){
             e.printStackTrace();
         }
     }
 
     public void playerLogin(Socket skt, ObjectOutputStream objectOutput){
-        System.out.println("Sending world");
         sendTCPData(Main.generator.getWorld(), skt, objectOutput);
-        System.out.println("Sent world");
-        System.out.println("Sending world size");
         sendTCPData(Main.worldSize, skt, objectOutput);
-        System.out.println("Sent world size");
     }
 }

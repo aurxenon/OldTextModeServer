@@ -1,6 +1,8 @@
 package net.edcubed.TextModeServer;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import net.edcubed.TextModeCommons.*;
@@ -29,5 +31,8 @@ public class ExtraUtils {
                 gamePlayers.set(i, player);
             }
         }
+    }
+    public void log(Object data) {
+        System.out.println(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date()) + " - " + data.toString());
     }
 }
